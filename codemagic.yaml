@@ -6,14 +6,13 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
-    scripts:
-      - name: Generate iOS Project
-        script: |
-          # This creates the missing ios/ folder automatically
-          flutter create . --platforms ios --project-name wallet
+scripts:
+      - name: Create iOS folder
+        script: flutter create . --platforms ios
       - name: Install dependencies
         script: flutter pub get
       - name: Build iOS IPA
         script: flutter build ipa --release --no-codesign
     artifacts:
       - build/ios/ipa/*.ipa
+      - build/ios/iphoneos/*.app
