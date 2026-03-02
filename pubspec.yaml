@@ -6,7 +6,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.1.0
+  cupertino_icons: ^1.0.6
+  shared_preferences: ^2.2.2  # <--- Manually add this line here
 dev_dependencies:
   flutter_test:
     sdk: flutter
