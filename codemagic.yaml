@@ -6,7 +6,7 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
-scripts:
+    scripts:
       - name: Create iOS folder
         script: flutter create . --platforms ios
       - name: Install dependencies
