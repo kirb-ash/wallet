@@ -11,8 +11,18 @@ workflows:
         script: flutter create . --platforms ios
       - name: Install dependencies
         script: flutter pub get
-      - name: Build iOS IPA
-        script: flutter build ipa --release --no-codesign
+      - name: Build iOS App Bundle
+        script: |
+          # Build the app without needing a paid Apple Developer account
+          flutter build ios --release --no-codesign
+      - name: Manual IPA Packaging
+        script: |
+          # This converts the .app into a .ipa that AltStore can read
+          cd build/ios/iphoneos
+          mkdir Payload
+          cp -r Runner.app Payload/
+          zip -r wallet.ipa Payload/
+          mkdir -p ../ipa
+          mv wallet.ipa ../ipa/
     artifacts:
       - build/ios/ipa/*.ipa
-      - build/ios/iphoneos/*.app
