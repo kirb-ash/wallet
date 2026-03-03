@@ -1,15 +1,36 @@
-name: wallet
-description: A clean finance tracker.
+name: sleek_wallet
+description: A Quant-style wallet with automated SMS scraping and Dynamic Island.
+publish_to: 'none'
 version: 1.0.0+1
+
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: '>=3.0.0 <4.0.0'
+
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  shared_preferences: ^2.2.2  # <--- Manually add this line here
+  shared_preferences: ^2.2.2
+  # Used to bridge data for the Dynamic Island
+  home_widget: ^0.4.0 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^3.0.0
+  # The magic tool that generates your balloon app icon
+  flutter_launcher_icons: ^0.14.4
+
+# This section configures your App Icon
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  remove_alpha_ios: true
+
 flutter:
   uses-material-design: true
+
+  # This registers your images so Flutter can use them
+  assets:
+    - assets/images/
